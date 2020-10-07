@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Ejercicio Vehiculos - Typescript</title>
+  </head>
+  <body>
+
+  		<h2 class="text-center py-3"> Ejercicio Vehiculos </h2>
+
+		<form class="form-row justify-content-center pt-3" name="vehicles"  id="car_form" method="post" action="">
+  			<div class="form-group mb-2">
+    			<label for="plate" class="h4">Plate</label>
+    			<input type="text" class="form-control form-control-lg" id="plate_car" name="plate_car">
+    			<div id="plate_error" class="invalid-feedback"></div>
+  			</div>
+  			<div class="form-group mx-sm-3 mb-2">
+    			<label for="brand" class="h4">Brand</label>
+   			    <input type="text" class="form-control form-control-lg" id="brand_car" name="brand_car">
+   			    <div id="brand_error" class="invalid-feedback"></div>
+ 			</div>
+  			<div class="form-group mb-2 pb-3">
+    			<label for="color" class="h4">Color</label>
+    			<input type="text" class="form-control form-control-lg" id="color_car" name="color_car">
+    			<div id="color_error" class="invalid-feedback"></div>
+  			</div>
+  			<div class="w-100"></div>
+  			<button type="submit" class="btn btn-primary mb-2 btn-lg" >Create car</button>
+		</form>
+
+		<form class="form-row justify-content-center pt-3 invisible" name="wheels"  id="wheel_form"  method="post" action="">
+  			<div class="form-group mx-2">
+    			<label for="wheel1" class="h4">Brand - First wheel</label>
+    			<input type="text" class="form-control form-control-lg" id="first_wheel">
+    			<div id="wheel1_error" class="invalid-feedback"></div>
+  			</div>
+  			<div class="form-group mx-2">
+    			<label for="diameter1" class="h4">Diameter</label>
+   			    <input type="text" class="form-control form-control-lg" id="first_diameter">
+   			    <div id="diameter1_error" class="invalid-feedback"></div>
+ 			</div>
+  			<div class="form-group mx-2">
+    			<label for="wheel2" class="h4">Brand - Second wheel</label>
+    			<input type="text" class="form-control form-control-lg" id="second_wheel">
+    			<div id="wheel2_error" class="invalid-feedback"></div>
+  			</div>
+  			<div class="form-group mx-2">
+    			<label for="diameter2" class="h4">Diameter</label>
+    			<input type="text" class="form-control form-control-lg" id="second_diameter">
+    			<div id="diameter2_error" class="invalid-feedback"></div>
+  			</div>
+  			<div class="form-group mx-2">
+    			<label for="wheel3" class="h4 ">Brand - Third wheel</label>
+    			<input type="text" class="form-control form-control-lg" id="third_wheel">
+    			<div id="wheel3_error" class="invalid-feedback"></div>
+  			</div>
+  			<div class="form-group mx-2">
+    			<label for="diameter3" class="h4 ">Diameter</label>
+   			    <input type="text" class="form-control form-control-lg" id="third_diameter">
+   			    <div id="diameter3_error" class="invalid-feedback"></div>
+ 			</div>
+  			<div class="form-group mx-2">
+    			<label for="wheel4" class="h4">Brand - Fourth wheel</label>
+   			    <input type="text" class="form-control form-control-lg" id="fourth_wheel">
+   			    <div id="wheel4_error" class="invalid-feedback"></div>
+ 			</div>
+  			<div class="form-group mx-2">
+    			<label for="diameter4" class="h4">Diameter</label>
+    			<input type="text" class="form-control form-control-lg" id="fourth_diameter">
+    			<div id="diameter4_error" class="invalid-feedback"></div>
+  			</div>
+  			<div class="w-100"></div>
+  			<button type="submit" class="btn btn-primary mb-2 btn-lg">Add wheels</button>
+		</form>
+
+		<div class="container m-auto invisible" id="show_data">
+			<h6>Car:</h6>
+			<div class="row py-3">
+				<div class="col-3"></div>
+				<div class="col-3"></div>
+				<div class="col-3"></div>
+				<div class="w-100"></div>
+			</div>
+			<h6>Wheels:</h6>
+			<div class="row py-3">
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+			</div>	
+		</div>	
+
+    <!-- Optional JavaScript -->
+    <script src="../models/car.js"></script>
+	<script src="../models/wheel.js"></script>
+	<script src="../controllers/controller.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
