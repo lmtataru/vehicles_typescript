@@ -65,36 +65,23 @@ function validatePlate(platenr) {
     }
 }
 form1.onsubmit = function () {
-    var first_diameter = document.getElementById("first_diameter");
-    var first_wheel = document.getElementById("first_wheel");
-    var second_diameter = document.getElementById("second_diameter");
-    var second_wheel = document.getElementById("second_wheel");
-    var third_diameter = document.getElementById("third_diameter");
-    var third_wheel = document.getElementById("third_wheel");
-    var fourth_diameter = document.getElementById("fourth_diameter");
-    var fourth_wheel = document.getElementById("fourth_wheel");
-    var diameter1_error = document.getElementById("diameter1_error");
-    var wheel1_error = document.getElementById("wheel1_error");
-    var diameter2_error = document.getElementById("diameter2_error");
-    var wheel2_error = document.getElementById("wheel2_error");
-    var diameter3_error = document.getElementById("diameter3_error");
-    var wheel3_error = document.getElementById("wheel3_error");
-    var diameter4_error = document.getElementById("diameter4_error");
-    var wheel4_error = document.getElementById("wheel4_error");
+    var wheels = [];
+    var diameters = [];
+    var error_wheels = [];
+    var error_diameter = [];
     var countErrors = 0;
-    countErrors += checkDiameter(first_diameter, diameter1_error);
-    countErrors += checkDiameter(second_diameter, diameter2_error);
-    countErrors += checkDiameter(third_diameter, diameter3_error);
-    countErrors += checkDiameter(fourth_diameter, diameter4_error);
-    countErrors += checkWheel(first_wheel, wheel1_error);
-    countErrors += checkWheel(second_wheel, wheel2_error);
-    countErrors += checkWheel(third_wheel, wheel3_error);
-    countErrors += checkWheel(fourth_wheel, wheel4_error);
+    for (var i = 0; i < 4; i++) {
+        diameters.push(document.getElementById("diameter_" + i));
+        wheels.push(document.getElementById("wheel_" + i));
+        error_wheels.push(document.getElementById("error_wheel_" + i));
+        error_diameter.push(document.getElementById("error_diameter_" + i));
+        countErrors += checkDiameter(diameters[i], error_diameter[i]);
+        countErrors += checkWheel(wheels[i], error_wheels[i]);
+    }
     if (countErrors == 0) {
-        car.addWheel(new Wheel(parseFloat(first_diameter.value), first_wheel.value));
-        car.addWheel(new Wheel(parseFloat(second_diameter.value), second_wheel.value));
-        car.addWheel(new Wheel(parseFloat(third_diameter.value), third_wheel.value));
-        car.addWheel(new Wheel(parseFloat(fourth_diameter.value), fourth_wheel.value));
+        for (var i = 0; i < 4; i++) {
+            car.addWheel(new Wheel(parseFloat(diameters[i].value), wheels[i].value));
+        }
         var show_data = document.getElementById("show_data");
         show_data.classList.remove('invisible');
         // display data
@@ -129,20 +116,7 @@ function checkDiameter(diameter, diameter_error) {
         countErrors++;
     }
     else if (!validateDiameter(parseFloat(diameter.value))) {
-        switch (diameter.id) {
-            case "first_diameter":
-                alert("Diameter of the 1st wheel is not correct");
-                break;
-            case "second_diameter":
-                alert("Diameter of the 2nd wheel is not correct");
-                break;
-            case "third_diameter":
-                alert("Diameter of the 3rd wheel is not correct");
-                break;
-            case "fourth_diameter":
-                alert("Diameter of the 4th wheel is not correct");
-                break;
-        }
+        alert("Diameter of the wheel: " + (getNrFromID(diameter.id) + 1) + " is not correct");
         diameter.classList.add('is-invalid');
         diameter_error.textContent = "Please insert the correct diameter";
         countErrors++;
@@ -168,4 +142,7 @@ function checkWheel(wheel, wheel_error) {
         wheel_error.textContent = "";
     }
     return countErrors;
+}
+function getNrFromID(id) {
+    return parseFloat(id.match(/\d+/g)[0]);
 }
